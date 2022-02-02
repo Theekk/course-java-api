@@ -4,8 +4,9 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
-@AllArgsConstructor
 @NoArgsConstructor
 @Data
 @Entity
@@ -18,6 +19,11 @@ public class Category implements Serializable {
     private Long id;
     private String name;
 
+    @Transient
+    private Set<Product> products = new HashSet<>();
 
-
+    public Category(Long id, String name) {
+        this.id = id;
+        this.name = name;
+    }
 }
